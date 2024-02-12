@@ -51,41 +51,48 @@ import java.util.*;
             }while (cas != 5);}
 
           void ChoixMenuStudents() {
-            library lb =new library();
-            int cas=0;
-            do{
-                System.out.println("================ Etudiants =================");
-                System.out.println("||                                        ||");
-                System.out.println("||=== veuillez choisir ===                ||");
-                System.out.println("||1- Ajouter un etudiant                  ||");
-                System.out.println("||2- Afficher la liste des etudiants      ||");
-                System.out.println("||3-Supprimer un etudiant                 ||");
-                System.out.println("||4-Modifier un etudiant                  ||");
-                System.out.println("||5- Quitter                              ||");
+              library lb = new library();
+              int cas = 0;
+              do {
+                  System.out.println("================ Etudiants =================");
+                  System.out.println("||                                        ||");
+                  System.out.println("||=== veuillez choisir ===                ||");
+                  System.out.println("||1- Ajouter un etudiant                  ||");
+                  System.out.println("||2- Afficher la liste des etudiants      ||");
+                  System.out.println("||3-Supprimer un etudiant                 ||");
+                  System.out.println("||4-Modifier un etudiant                  ||");
+                  System.out.println("||5- Quitter                              ||");
+                  Scanner input = new Scanner(System.in);
 
-                Scanner input = new Scanner(System.in);
-                int choix = input.nextInt();
-                switch (choix) {
-                    case 1:
-                        lb.AddStudent();
-                        break;
-                    case 2:
-                        lb.AfficherListeEtudiants();
-                        break;
-                    case 3:
-                        lb.supprimerEtudiant();
-                        break;
-                    case 4:
-                        lb.modifierEtudiant();
-                        break;
-                    case 5:
-                        AfficherMenu();
-                        break;
-                    default:
+                  if (input.hasNextInt()) {
 
-                        System.out.println("rien de rien");
-                }
-            }while(cas != 5);
+                      int choix = input.nextInt();
+                      switch (choix) {
+                          case 1:
+                              lb.AddStudent();
+                              break;
+                          case 2:
+                              lb.AfficherListeEtudiants();
+                              break;
+                          case 3:
+                              lb.supprimerEtudiant();
+                              break;
+                          case 4:
+                              lb.modifierEtudiant();
+                              break;
+                          case 5:
+                              AfficherMenu();
+                              break;
+                          default:
+
+                              System.out.println("rien de rien");
+                      }
+                  }
+                  else {
+                      System.out.println("verifier votre choix");}
+              } while (cas != 5);
+
+
         }
 
          void MenuBooks(){

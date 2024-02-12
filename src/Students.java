@@ -23,14 +23,15 @@ public class Students {
         reservations.forEach(System.out::println);
     }
 
-    void supprimerReservation(){
-        System.out.println("entrer le nom de l'etudiant");
-        Scanner input = new Scanner(System.in);
-        String Rechstd =input.next();
-        reservations.removeIf(students ->students.student.Name.equalsIgnoreCase(Rechstd));
-        String RechBk =input.next();
-        reservations.removeIf(bks ->bks.Title.equalsIgnoreCase(RechBk));
-    }
+//    void supprimerReservation(){
+//        System.out.println("entrer le nom de l'etudiant");
+//        Scanner input = new Scanner(System.in);
+//        String Rechstd =input.next();
+//        reservations.removeIf(stude ->stude.student.Name.equalsIgnoreCase(Rechstd));
+//        String RechBk =input.next();
+//        reservations.removeIf(bks ->bks.Title.equalsIgnoreCase(RechBk));
+//
+//    }
 
     @Override
     public String toString() {
