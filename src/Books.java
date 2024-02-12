@@ -5,6 +5,7 @@ public class Books {
     String Author ;
     //int Date_Sortie;
     String ISBN ;
+    Students student;
 
     void modify(){
         Scanner input =new Scanner(System.in);
@@ -19,5 +20,15 @@ public class Books {
 
 
 
+    }
+
+    @Override
+    public String toString() {
+        return "Books{" +
+                "Title='" + Title + '\'' +
+                ", Author='" + Author + '\'' +
+                ", ISBN='" + ISBN + '\'' +
+                ", student=" + student +
+                '}';
     }
 }

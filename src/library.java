@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
@@ -56,17 +57,6 @@ public  class library {
         System.out.println("veuillez rentrer lelivre a supprimer ");
         Scanner input=new Scanner(System.in);
         String Rech =input.nextLine();
-
-        //Books book = Listelivres.stream().filter(books -> books.Title.contains(Rech)).toList().getFirst();
-
-//        if (book!=null) {
-//
-//            Listelivres.remove(book);
-//        }
-
-//        else {
-//            System.out.println("not ok");
-//        }
              boolean isRemoved = Listelivres.removeIf(books -> books.Title.equalsIgnoreCase(Rech));
              if (isRemoved)
                  System.out.println("supprimé avec succes");
@@ -74,6 +64,22 @@ public  class library {
                  System.out.println("le livre n'existe pas ");
              }
         }
+    void supprimerEtudiant(){
+
+        System.out.println("veuillez rentrer le nom de l'etudiant a supprimer ");
+        Scanner input=new Scanner(System.in);
+        String Rech =input.nextLine();
+        Students student = ListEtudiants.stream().filter(studs -> studs.Name.contains(Rech)).collect(Collectors.toList()).get(0);
+
+        if (student!=null) {
+
+            ListEtudiants.remove(student);
+            System.out.println("Supprimé avec succès");
+        }
+
+            else {
+            System.out.println("l'etudiant n'existe pas");
+        }}
 //static void SupprimerLivre() {
 //    System.out.println("Veuillez rentrer le livre à supprimer : ");
 //    Scanner input = new Scanner(System.in);
@@ -108,9 +114,46 @@ public  class library {
 
 
     }
+    void modifierEtudiant() {
+        System.out.println("entrer le nom de l'etudiant a modifier ");
+        Scanner input = new Scanner(System.in);
+        String Rech = input.nextLine();
+        Students stD = ListEtudiants.stream().filter(stds -> stds.Name.contains(Rech)).collect(Collectors.toList()).get(0);
+        if (stD != null) {
+            stD.modifyStudent();
+        }
+    }
+
+    void reserver(){
+            System.out.println("entrer le livre a reserver ");
+            Scanner input = new Scanner(System.in);
+            String RechBK=input.next();
+            Books Rechbook= Listelivres.stream().filter(bks->bks.Title.equalsIgnoreCase(RechBK)).findFirst().get();
+            System.out.println("entrer le nom de l'etudiant qui reserve ");
+            String RechE=input.next();
+            Students RechStd=ListEtudiants.stream().filter(students -> students.Name.equalsIgnoreCase(RechE)).findFirst().get();
+            Rechbook.student=RechStd;
+            RechStd.reservations.add(Rechbook);
+        System.out.println("Livre emprunté avec succès.");
+
+    }
 
 
+    void efficherReservations(){
+         List<Books> REServedBooks =Listelivres.stream().filter(bkres->bkres.student!=null).collect(Collectors.toList());
+      REServedBooks.forEach(System.out::println);
+
+    }
+void supprimerReservation(){
+         Students stud = new Students();
+    stud.supprimerReservation();
 }
+
+    }
+
+
+
+
 
 
 

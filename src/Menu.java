@@ -1,4 +1,5 @@
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 import java.util.*;
  class Menu {
@@ -12,7 +13,10 @@ import java.util.*;
                 System.out.println("||=== veuillez choisir ===||");
                 System.out.println("||1- Espace Etudiants     ||");
                 System.out.println("||2- Espaces Livres       ||");
-                System.out.println("||3- Quitter              ||");
+                System.out.println("||3-Ajouter Reservation   ||");
+                System.out.println("||4-Afficher liste de reservations ");
+                System.out.println("||5-Supprimer une reservation ||");
+                System.out.println("||5- Quitter              ||");
 
 
                // Menu Choix = new Menu();
@@ -22,13 +26,19 @@ import java.util.*;
                     int choix = input.nextInt();
                     switch (choix) {
                         case 1:
-
                             ChoixMenuStudents();
                             break;
                         case 2:
-
                             MenuBooks();
                             break;
+                        case 3:
+                            library.reserver();
+                            break;
+                        case 4 :
+                            library.efficherReservations();
+                            break;
+                        case 5:
+                            library.supprimerReservation();
                         default:
                             System.out.println("rien de rien");
                     }
@@ -38,7 +48,7 @@ import java.util.*;
                         AfficherMenu();
                     }
 
-            }while (cas != 0);}
+            }while (cas != 5);}
 
           void ChoixMenuStudents() {
             library lb =new library();
@@ -49,7 +59,9 @@ import java.util.*;
                 System.out.println("||=== veuillez choisir ===                ||");
                 System.out.println("||1- Ajouter un etudiant                  ||");
                 System.out.println("||2- Afficher la liste des etudiants      ||");
-                System.out.println("||3- Quitter                              ||");
+                System.out.println("||3-Supprimer un etudiant                 ||");
+                System.out.println("||4-Modifier un etudiant                  ||");
+                System.out.println("||5- Quitter                              ||");
 
                 Scanner input = new Scanner(System.in);
                 int choix = input.nextInt();
@@ -61,11 +73,19 @@ import java.util.*;
                         lb.AfficherListeEtudiants();
                         break;
                     case 3:
+                        lb.supprimerEtudiant();
+                        break;
+                    case 4:
+                        lb.modifierEtudiant();
+                        break;
+                    case 5:
                         AfficherMenu();
+                        break;
                     default:
+
                         System.out.println("rien de rien");
                 }
-            }while(cas != 3);
+            }while(cas != 5);
         }
 
          void MenuBooks(){
@@ -97,6 +117,7 @@ import java.util.*;
                 case 4:
                     library.modifierLivre();
                     break;
+
                 default:
                     System.out.println("erreur!");
                     break;
